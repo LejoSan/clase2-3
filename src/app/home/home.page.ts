@@ -1,4 +1,8 @@
+import { Route } from '@angular/compiler/src/core';
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+//
+import {NewExpansivePage} from  '../new-expansive/new-expansive.page';
 
 interface SectionsI {
   header: {
@@ -47,9 +51,21 @@ export class HomePage implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
+ async pageNew(){
+  
+  const modal = await this.modalController.create({
+    component: NewExpansivePage,
+    cssClass: 'my-custom-class'
+  });
+  return await modal.present();
+
+
+
+  }
   ngOnInit() {
   }
+
 
 }
